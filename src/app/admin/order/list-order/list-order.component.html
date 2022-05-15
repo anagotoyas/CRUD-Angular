@@ -1,0 +1,66 @@
+<div class="container">
+    <h3 class="fw-bold">Lista de ordenes</h3>
+    
+    <div class="text-end">
+      <button mat-raised-button color="primary" routerLink="/admin/orders/new">
+        Nueva Orden
+      </button>
+    </div>
+    
+    <div class="example-header">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Buscar orden"
+        />
+      </mat-form-field>
+    </div>
+    
+    <div>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        class="mat-elevation-z8"
+        class="w-100"
+      >
+      <ng-container matColumnDef="ID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+        <ng-container matColumnDef="Descripcion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripcion</th>
+          <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+          <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+        </ng-container>
+    
+       
+    
+        <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-button
+              color="primary"
+              [routerLink]="[element.id, 'edit']"
+            >
+              <mat-icon>ballot</mat-icon>
+            </button>
+            <button mat-button color="primary" (click)="eliminar(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    
+    </div>
+    

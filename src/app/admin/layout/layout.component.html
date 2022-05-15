@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <span>Administración</span>
+  
+    <button mat-button routerLink="/admin/coffes" class="ms-2">Ordenes</button>
+  
+    <span class="spacer"></span>
+  
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon> Ana
+    </button>
+  
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="../">
+        <mat-icon>logout</mat-icon> Cerrar sesión
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  
+  <div class="container p-5">
+   
+  </div>
+  <router-outlet></router-outlet>
+  
